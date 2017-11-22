@@ -1,0 +1,46 @@
+Entity Reference Part 1
+Entity reference is used to reference an entity from a content type.
+
+First we will reference a node entity with a content
+
+Create a content type Doctor's Appointment.Add fields
+1)Patient Name-text
+2)Patient Address-text area
+3)Appointment Time-text
+
+
+Create another content type Room Numbers.Add fields
+1)Room Number-text
+
+Add content for room number
+1)Room number 101
+2)Room number 102
+
+Add another field in Doctor's Appointment
+1)Room Number-Entity Reference
+
+Eg
+Patient Name-Amit Sinha
+Patient Address-Kolkata
+Appointment time-2 PM
+Room Number-Room Number 101
+
+Reference a specific User
+Add another field in Doctor's Appointment
+Doctor Name-Entity Reference
+
+Before that add a user in drupal
+2 users
+1)Soumya Banerjee
+2)Suman Dutta
+
+Add these to users to role as Doctors(create one)
+
+Add reference for Doctor names to users having roles as doctors
+
+Eg
+Patient Name-Amit Sinha
+Patient Address-Kolkata
+Appointment time-2 PM
+Room Number-Room Number 101
+Doctor Name-Soumya Banerjee

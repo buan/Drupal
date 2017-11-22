@@ -1,0 +1,208 @@
+$view = new view();
+$view->name = 'dog_view';
+$view->description = '';
+$view->tag = 'default';
+$view->base_table = 'node';
+$view->human_name = 'Dog-view';
+$view->core = 7;
+$view->api_version = '3.0';
+$view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+/* Display: Master */
+$handler = $view->new_display('default', 'Master', 'default');
+$handler->display->display_options['title'] = 'Dog-view';
+$handler->display->display_options['use_more_always'] = FALSE;
+$handler->display->display_options['access']['type'] = 'perm';
+$handler->display->display_options['cache']['type'] = 'none';
+$handler->display->display_options['query']['type'] = 'views_query';
+$handler->display->display_options['exposed_form']['type'] = 'basic';
+$handler->display->display_options['pager']['type'] = 'full';
+$handler->display->display_options['pager']['options']['items_per_page'] = '2';
+$handler->display->display_options['pager']['options']['offset'] = '0';
+$handler->display->display_options['pager']['options']['id'] = '0';
+$handler->display->display_options['pager']['options']['quantity'] = '9';
+$handler->display->display_options['style_plugin'] = 'table';
+/* Relationship: Author name */
+$handler->display->display_options['relationships']['uid']['id'] = 'uid';
+$handler->display->display_options['relationships']['uid']['table'] = 'node';
+$handler->display->display_options['relationships']['uid']['field'] = 'uid';
+$handler->display->display_options['relationships']['uid']['ui_name'] = 'Author name';
+$handler->display->display_options['relationships']['uid']['label'] = 'Author';
+/* Field: Content: Dog Description */
+$handler->display->display_options['fields']['field_dog_description']['id'] = 'field_dog_description';
+$handler->display->display_options['fields']['field_dog_description']['table'] = 'field_data_field_dog_description';
+$handler->display->display_options['fields']['field_dog_description']['field'] = 'field_dog_description';
+$handler->display->display_options['fields']['field_dog_description']['label'] = 'Description';
+/* Field: Content: Dog Image */
+$handler->display->display_options['fields']['field_dog_image']['id'] = 'field_dog_image';
+$handler->display->display_options['fields']['field_dog_image']['table'] = 'field_data_field_dog_image';
+$handler->display->display_options['fields']['field_dog_image']['field'] = 'field_dog_image';
+$handler->display->display_options['fields']['field_dog_image']['click_sort_column'] = 'fid';
+$handler->display->display_options['fields']['field_dog_image']['settings'] = array(
+  'image_style' => 'medium',
+  'image_link' => 'content',
+);
+/* Sort criterion: Content: Post date */
+$handler->display->display_options['sorts']['created']['id'] = 'created';
+$handler->display->display_options['sorts']['created']['table'] = 'node';
+$handler->display->display_options['sorts']['created']['field'] = 'created';
+$handler->display->display_options['sorts']['created']['order'] = 'DESC';
+/* Filter criterion: Content: Published */
+$handler->display->display_options['filters']['status']['id'] = 'status';
+$handler->display->display_options['filters']['status']['table'] = 'node';
+$handler->display->display_options['filters']['status']['field'] = 'status';
+$handler->display->display_options['filters']['status']['value'] = 1;
+$handler->display->display_options['filters']['status']['group'] = 1;
+$handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+/* Filter criterion: Content: Type */
+$handler->display->display_options['filters']['type']['id'] = 'type';
+$handler->display->display_options['filters']['type']['table'] = 'node';
+$handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['value'] = array(
+  'dogs' => 'dogs',
+);
+
+/* Display: Page */
+$handler = $view->new_display('page', 'Page', 'page');
+$handler->display->display_options['defaults']['header'] = FALSE;
+/* Header: Global: Result summary */
+$handler->display->display_options['header']['result']['id'] = 'result';
+$handler->display->display_options['header']['result']['table'] = 'views';
+$handler->display->display_options['header']['result']['field'] = 'result';
+$handler->display->display_options['header']['result']['content'] = 'Displaying @start - @end of @total.There are @current_record_count  records';
+$handler->display->display_options['defaults']['arguments'] = FALSE;
+$handler->display->display_options['path'] = 'dog-view';
+$handler->display->display_options['menu']['type'] = 'normal';
+$handler->display->display_options['menu']['title'] = 'Dog-view';
+$handler->display->display_options['menu']['weight'] = '0';
+$handler->display->display_options['menu']['name'] = 'main-menu';
+$handler->display->display_options['menu']['context'] = 0;
+$handler->display->display_options['menu']['context_only_inline'] = 0;
+
+/* Display: Pointer-view */
+$handler = $view->new_display('page', 'Pointer-view', 'page_1');
+$handler->display->display_options['defaults']['title'] = FALSE;
+$handler->display->display_options['title'] = 'Pointer';
+$handler->display->display_options['defaults']['footer'] = FALSE;
+/* Footer: Global: Text area */
+$handler->display->display_options['footer']['area']['id'] = 'area';
+$handler->display->display_options['footer']['area']['table'] = 'views';
+$handler->display->display_options['footer']['area']['field'] = 'area';
+$handler->display->display_options['footer']['area']['content'] = '<?php
+echo "You are viewing this view";
+?>';
+$handler->display->display_options['footer']['area']['format'] = 'php_code';
+/* Footer: Global: View area */
+$handler->display->display_options['footer']['view']['id'] = 'view';
+$handler->display->display_options['footer']['view']['table'] = 'views';
+$handler->display->display_options['footer']['view']['field'] = 'view';
+$handler->display->display_options['defaults']['arguments'] = FALSE;
+$handler->display->display_options['defaults']['filter_groups'] = FALSE;
+$handler->display->display_options['defaults']['filters'] = FALSE;
+/* Filter criterion: Content: Published */
+$handler->display->display_options['filters']['status']['id'] = 'status';
+$handler->display->display_options['filters']['status']['table'] = 'node';
+$handler->display->display_options['filters']['status']['field'] = 'status';
+$handler->display->display_options['filters']['status']['value'] = 1;
+$handler->display->display_options['filters']['status']['group'] = 1;
+$handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+/* Filter criterion: Content: Type */
+$handler->display->display_options['filters']['type']['id'] = 'type';
+$handler->display->display_options['filters']['type']['table'] = 'node';
+$handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['value'] = array(
+  'dogs' => 'dogs',
+);
+/* Filter criterion: Content: Dog Description (field_dog_description) */
+$handler->display->display_options['filters']['field_dog_description_value']['id'] = 'field_dog_description_value';
+$handler->display->display_options['filters']['field_dog_description_value']['table'] = 'field_data_field_dog_description';
+$handler->display->display_options['filters']['field_dog_description_value']['field'] = 'field_dog_description_value';
+$handler->display->display_options['filters']['field_dog_description_value']['operator'] = 'contains';
+$handler->display->display_options['filters']['field_dog_description_value']['value'] = 'Pointer';
+$handler->display->display_options['filters']['field_dog_description_value']['exposed'] = TRUE;
+$handler->display->display_options['filters']['field_dog_description_value']['expose']['operator_id'] = 'field_dog_description_value_op';
+$handler->display->display_options['filters']['field_dog_description_value']['expose']['label'] = 'Dog Description (field_dog_description)';
+$handler->display->display_options['filters']['field_dog_description_value']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['field_dog_description_value']['expose']['operator_label'] = 'Dog breed';
+$handler->display->display_options['filters']['field_dog_description_value']['expose']['operator'] = 'field_dog_description_value_op';
+$handler->display->display_options['filters']['field_dog_description_value']['expose']['identifier'] = 'field_dog_description_value';
+$handler->display->display_options['filters']['field_dog_description_value']['expose']['required'] = TRUE;
+$handler->display->display_options['filters']['field_dog_description_value']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  3 => 0,
+);
+$handler->display->display_options['path'] = 'dog-view/pointer-view';
+$handler->display->display_options['menu']['type'] = 'tab';
+$handler->display->display_options['menu']['title'] = 'Pointer View';
+$handler->display->display_options['menu']['weight'] = '1';
+$handler->display->display_options['menu']['name'] = 'main-menu';
+$handler->display->display_options['menu']['context'] = 0;
+$handler->display->display_options['menu']['context_only_inline'] = 0;
+
+/* Display: Page 2 */
+$handler = $view->new_display('page', 'Page 2', 'page_2');
+$handler->display->display_options['defaults']['title'] = FALSE;
+$handler->display->display_options['title'] = 'Greyhound-view';
+$handler->display->display_options['defaults']['footer'] = FALSE;
+/* Footer: Global: Result summary */
+$handler->display->display_options['footer']['result']['id'] = 'result';
+$handler->display->display_options['footer']['result']['table'] = 'views';
+$handler->display->display_options['footer']['result']['field'] = 'result';
+$handler->display->display_options['defaults']['filter_groups'] = FALSE;
+$handler->display->display_options['defaults']['filters'] = FALSE;
+/* Filter criterion: Content: Published */
+$handler->display->display_options['filters']['status']['id'] = 'status';
+$handler->display->display_options['filters']['status']['table'] = 'node';
+$handler->display->display_options['filters']['status']['field'] = 'status';
+$handler->display->display_options['filters']['status']['value'] = 1;
+$handler->display->display_options['filters']['status']['group'] = 1;
+$handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+/* Filter criterion: Content: Type */
+$handler->display->display_options['filters']['type']['id'] = 'type';
+$handler->display->display_options['filters']['type']['table'] = 'node';
+$handler->display->display_options['filters']['type']['field'] = 'type';
+$handler->display->display_options['filters']['type']['value'] = array(
+  'dogs' => 'dogs',
+);
+/* Filter criterion: Content: Dog Description (field_dog_description) */
+$handler->display->display_options['filters']['field_dog_description_value']['id'] = 'field_dog_description_value';
+$handler->display->display_options['filters']['field_dog_description_value']['table'] = 'field_data_field_dog_description';
+$handler->display->display_options['filters']['field_dog_description_value']['field'] = 'field_dog_description_value';
+$handler->display->display_options['filters']['field_dog_description_value']['operator'] = 'contains';
+$handler->display->display_options['filters']['field_dog_description_value']['value'] = 'GreyHound';
+$handler->display->display_options['path'] = 'dog-view/greyhound-view';
+$handler->display->display_options['menu']['type'] = 'tab';
+$handler->display->display_options['menu']['title'] = 'Greyhound-View';
+$handler->display->display_options['menu']['weight'] = '2';
+$handler->display->display_options['menu']['name'] = 'main-menu';
+$handler->display->display_options['menu']['context'] = 1;
+$handler->display->display_options['menu']['context_only_inline'] = 0;
+
+/* Display: Block */
+$handler = $view->new_display('block', 'Block', 'block_1');
+$handler->display->display_options['defaults']['title'] = FALSE;
+$handler->display->display_options['title'] = 'ImagesBlock';
+$handler->display->display_options['defaults']['pager'] = FALSE;
+$handler->display->display_options['pager']['type'] = 'none';
+$handler->display->display_options['pager']['options']['offset'] = '0';
+$handler->display->display_options['defaults']['style_plugin'] = FALSE;
+$handler->display->display_options['style_plugin'] = 'grid';
+$handler->display->display_options['style_options']['columns'] = '1';
+$handler->display->display_options['defaults']['style_options'] = FALSE;
+$handler->display->display_options['defaults']['row_plugin'] = FALSE;
+$handler->display->display_options['row_plugin'] = 'fields';
+$handler->display->display_options['defaults']['row_options'] = FALSE;
+$handler->display->display_options['defaults']['fields'] = FALSE;
+/* Field: Content: Dog Image */
+$handler->display->display_options['fields']['field_dog_image']['id'] = 'field_dog_image';
+$handler->display->display_options['fields']['field_dog_image']['table'] = 'field_data_field_dog_image';
+$handler->display->display_options['fields']['field_dog_image']['field'] = 'field_dog_image';
+$handler->display->display_options['fields']['field_dog_image']['label'] = '';
+$handler->display->display_options['fields']['field_dog_image']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['field_dog_image']['click_sort_column'] = 'fid';
+$handler->display->display_options['fields']['field_dog_image']['settings'] = array(
+  'image_style' => 'small',
+  'image_link' => 'content',
+);
+$handler->display->display_options['block_description'] = 'ImagesBlock';

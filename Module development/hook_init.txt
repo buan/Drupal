@@ -1,0 +1,29 @@
+Create a module:
+1)Step 1:go to sites/all/modules.Make a folder with a module name.Here our module name is "mymodule"
+2)Create two files a)mymodule.module b) mymodule.info
+
+a)add this to mymodule.info
+name = My Module
+description = Implements normal hooks. 
+core = 7.x
+
+This is a description about module you are writing
+
+b)Implements module hook.
+Create your first module
+1)hook_init
+This hook is run at the beginning of the page request. It is typically used to set up global parameters that are needed later in the request. When this hook is called, the theme and all modules are already loaded in memory.
+
+in mymodule.module page,add this
+
+<?php
+function mymodule_init()
+{
+drupal_set_message(t('Hook Init initiated will be shown on every page load'), 'status');
+}
+
+//The message Hook Init initiated will be shown on every page load
+
+
+
+

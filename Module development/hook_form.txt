@@ -1,0 +1,109 @@
+For creating a form we need 2 things,
+1)A menu link where we can access the form
+2)HTML form where we can show our form elements
+
+1)Creating a link
+Create a function with hook_menu.Replace hook with your module name and copy the following
+
+function myform_menu() {
+  $items = array();
+
+  $items['examples/form-example'] = array( //this creates a URL that will call this form at "examples/form-example"
+    'title' => 'Form made by module', //page title
+    'description' => 'A form to mess around with.',
+    'page callback' => 'drupal_get_form', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+    'page arguments' => array('myform_form'), //put the name of the form here
+    'access callback' => TRUE
+  );
+
+  return $items;
+}
+
+2) Create the form and display
+
+
+The most important thing of drupal form is that whatever value you set in form element with "#" can be retrieved by array..each property is an array.For more API,visit https://api.drupal.org/api/drupal/developer%21topics%21forms_api_reference.html/7.x#checkbox
+
+function myform_form($form, &$form_state) {
+  
+   $form['firstname'] = array(
+    '#type' => 'textfield', //you can find a list of available types in the form api
+    '#title' => 'First Name',
+    '#size' => 10,
+    '#maxlength' => 10,
+	'#attributes' => array('class' =>array('sssss hhh'),'id'=>'ppp'),
+  );
+  
+  
+   $form['lastname'] = array(
+    '#type' => 'textfield', //you can find a list of available types in the form api
+    '#title' => 'Last Name',
+    '#size' => 10,
+    '#maxlength' => 10, 
+    '#required' => TRUE, //make this field required 
+  );
+  
+  $active = array(0 => t('Male'), 1 => t('Female'));
+
+   $form['active'] = array(
+    '#type' => 'radios',
+    '#title' => t('Gender'),
+    '#default_value' => isset($node->active) ? $node->active : 1,
+    '#options' => $active,
+    '#description' => t('Select the appropriate gender'),
+    '#access' => TRUE,
+  );
+  
+  
+	$options = array(0 => t('Cricket'), 1 => t('Football'),2=>t('Hockey'));
+	$form['hobbies'] = array(
+  '#type' => 'checkboxes',
+  '#options' =>$options,
+  '#title' => t('What are your hobbies?'),
+    );
+  
+    $form['Description'] = array(
+'#title' => t('Write Something about yourself'),
+
+'#type' => 'textarea',
+
+'#default_value' => isset(  $context['keywords']) ? drupal_implode_tags($context['keywords']) : '',
+);
+ 	$current_year=date("Y");
+	for($i=1970;$i<=$current_year;$i++)
+	{
+		$dob[$i]=t($i);
+	}
+	$form['selected'] = array(
+       '#type' => 'select',
+       '#title' => t('Date of Birth'),
+       '#options' => $dob,
+       '#description' => t('Set this to <em>Yes</em> if you would like this category to be selected by default.'),
+   );
+ 
+ $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Click Here!'),
+  );
+  
+  return $form;
+}
+
+function myform_form_validate($form, &$form_state) {
+}
+
+function myform_form_submit($form, &$form_state) {
+	 drupal_set_message(t('The form has been submitted. name="@first @last", year of birth="@year_of_birth",Gender="@Gender",yourself="@yourself",hobbies="@hobbies',
+    array(
+      '@first' => $form_state['values']['firstname'],
+      '@last' => $form_state['values']['lastname'],
+	  '@year_of_birth' => $form_state['values']['selected'],
+	  '@Gender' => $form_state['values']['active']==0?"Male":"Female",
+	  '@yourself' => $form_state['values']['Description'],
+	  '@hobbies' => $form_state['values']['hobbies'][0],
+    )
+  ));
+	
+
+	
+}
