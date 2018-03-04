@@ -20,4 +20,26 @@ Steps
             Content:Title
             (term) Taxonomy term: Name (fooditems):
                     For this make a relationship with taxonomy name(here food type) and fields. make this field hidden
-    c)Select Global text:Rewrite results as
+    c)Select Global text:Go to the text field and write html using tokens available as replacement patterns. in our case we write 
+    
+    This falls under the category <strong class="myitem-[name]">[name]</strong>
+
+    In order to make the css different for each taxonomy we add myitem-{{taxonomy name}} as the css and apply corresponding  css there for each content type
+
+    strong.myitem-Flowers {
+    color: red;
+}
+
+strong.myitem-Fruits {
+    color: yellow;
+}
+
+strong.myitem-Vegetables {
+    color: green;
+}
+
+like this
+
+Put filter criteria as published=yes and type=Eatable items
+
+No other changes are required. The taxonomy word changes to the corresponding color
