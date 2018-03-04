@@ -1,0 +1,23 @@
+In views we want to achieve 
+
+Views style add color.xlsx
+
+Steps
+1)Add the content types :Eatable Items
+2)Add 3 fields:
+    Title=>text
+    Body=>text
+    Food Type=>term reference
+
+3) Add taxonomy term: Food Type and add 3 names
+        1)Fruits
+        2)Vegetables
+        3)Flowers
+
+4)  Create a view named Eatable Items
+     a)Select table as format
+     b)Add fields
+            Content:Title
+            (term) Taxonomy term: Name (fooditems):
+                    For this make a relationship with taxonomy name(here food type) and fields. make this field hidden
+    c)Select Global text:Rewrite results as

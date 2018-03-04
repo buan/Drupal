@@ -1,0 +1,19 @@
+You can render HTMLS straight to Drupal page by this
+
+$items['showhtml'] = array( //this creates a URL that will call this form at "examples/form-example"
+  'title' => 'ShowHtml', //page title
+  'page callback' => 'showhtml', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+  'access callback' => TRUE
+);
+
+
+function showhtml()
+{
+  $output="<div class='tt'>Hello</div>";
+  $output.="<ul>List
+  <li>111</li>
+  <li>222</li>
+  <li>333</li>
+  </ul>";
+  return $output;
+}
