@@ -1,0 +1,30 @@
+ $form['postcode'] = array(
+    '#type' => 'textfield', //you can find a list of available types in the form api
+    '#title' => 'Enter your postcode',
+    '#size' => 20,
+    '#maxlength' => 20,
+    '#required' => TRUE, //make this field required 
+    '#autocomplete_path' =>'ajax_forms_autocomplete_callback'
+  );
+
+  //This is the field where the autocomplete is used. '#autocomplete_path' is the URL name
+
+
+$items['ajax_forms_autocomplete_callback'] = array( //this creates a URL that will call this form at "compareform"
+    'page callback' => 'ajax_forms_autocomplete_callback', //this is the function that will be called when the page is accessed.  for a form, use drupal_get_form
+    'type' =>MENU_CALLBACK,
+    'access callback' => TRUE
+  );
+//Here function and url have same name.
+
+
+function ajax_forms_autocomplete_callback($search=""){
+   $matches=array();
+   $matches['3181 Prahran']='3181 Prahran';
+   $matches['3181 South Yarra']='3181 South Yarra';
+   $matches['3181 Winsor']='3181 Winsor';
+   drupal_json_output($matches);
+   
+ }
+ //This is the function name. The array has to be in the format
+ $matches['name']=name and so on. index and text has to be same
